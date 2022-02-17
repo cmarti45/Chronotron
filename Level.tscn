@@ -1,0 +1,184 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/tiles/tile000.png" type="Texture" id=1]
+[ext_resource path="res://Assets/tiles/tile001.png" type="Texture" id=2]
+[ext_resource path="res://Assets/tiles/tile002.png" type="Texture" id=3]
+[ext_resource path="res://Assets/tiles/tiledipright.png" type="Texture" id=4]
+[ext_resource path="res://Assets/tiles/tiledipleft.png.png" type="Texture" id=5]
+[ext_resource path="res://MovingPlatform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://PressurePlatform.tscn" type="PackedScene" id=7]
+[ext_resource path="res://goalbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Goal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://HorizontalMovingPlatform.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Level.gd" type="Script" id=11]
+[ext_resource path="res://WeightedPlatform.tscn" type="PackedScene" id=12]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 64, 16, 0, 16, 0, 0, 64, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 64, 16, 0, 16, 0, 0, 64, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 32, 0, 64, 8, 64, 16, 0, 16, 0, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 8, 32, 0, 64, 0, 64, 16, 0, 16, 0, 8 )
+
+[sub_resource type="TileSet" id=5]
+0/name = "tile000.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 2, 2, 64, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "tile001.png 1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 2, 50, 64, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 2 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "tile002.png 2"
+2/texture = ExtResource( 3 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 2, 2, 16, 64 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "tiledipright.png 3"
+3/texture = ExtResource( 4 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 64, 16 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 3 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "tiledipleft.png.png 4"
+4/texture = ExtResource( 5 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 64, 16 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape = SubResource( 4 )
+4/shape_one_way = false
+4/shape_one_way_margin = 1.0
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 11 )
+
+[node name="TileLayer" type="CanvasLayer" parent="."]
+
+[node name="TileMap" type="TileMap" parent="TileLayer"]
+tile_set = SubResource( 5 )
+collision_layer = 2
+collision_mask = 23
+format = 1
+tile_data = PoolIntArray( 458756, 3, 0, 458759, 4, 0, 524298, 0, 0, 524299, 3, 0, 524302, 4, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 655358, 0, 0, 655359, 0, 0, 589824, 3, 0, 589827, 4, 0 )
+
+[node name="SceneLayer" type="CanvasLayer" parent="."]
+
+[node name="Platforms" type="Node" parent="SceneLayer"]
+
+[node name="Platform" parent="SceneLayer/Platforms" instance=ExtResource( 6 )]
+position = Vector2( 1376, 480 )
+initHeight = 3
+
+[node name="Platform5" parent="SceneLayer/Platforms" instance=ExtResource( 6 )]
+position = Vector2( 224, 352 )
+initHeight = 3
+
+[node name="Platform2" parent="SceneLayer/Platforms" instance=ExtResource( 6 )]
+position = Vector2( 1184, 480 )
+recChannel = 2
+initHeight = 2
+targetHeight = 5
+
+[node name="Platform3" parent="SceneLayer/Platforms" instance=ExtResource( 10 )]
+position = Vector2( 816, 448 )
+initHeight = 3
+targetHeight = 1
+
+[node name="Platform4" parent="SceneLayer/Platforms" instance=ExtResource( 12 )]
+position = Vector2( 1568, 480 )
+initHeight = 5
+
+[node name="Buttons" type="Node" parent="SceneLayer"]
+
+[node name="Platform" parent="SceneLayer/Buttons" instance=ExtResource( 7 )]
+position = Vector2( 560, 64 )
+
+[node name="Platform2" parent="SceneLayer/Buttons" instance=ExtResource( 7 )]
+position = Vector2( 728, -32 )
+recChannel = 2
+
+[node name="Players" type="Node" parent="SceneLayer"]
+
+[node name="goalbox" parent="SceneLayer/Players" instance=ExtResource( 8 )]
+position = Vector2( 976, 384 )
+
+[node name="Items" type="Node" parent="SceneLayer"]
+
+[node name="playbutton" parent="SceneLayer/Items" instance=ExtResource( 9 )]
+position = Vector2( 408, 32 )

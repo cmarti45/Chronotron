@@ -1,0 +1,81 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://goalbox.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Box/open04.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Box/open05.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Box/open00.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Box/open01.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Box/open09.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Box/open08.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Box/open03.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Box/open07.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Box/open10.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Box/open11.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Box/open12.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Box/Closed.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Box/open02.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Box/open06.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Box/redlight.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Box/greenlight.png" type="Texture" id=18]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 5 ), ExtResource( 13 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Close",
+"speed": 48.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "openclose",
+"speed": 48.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "Closed",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Open",
+"speed": 48.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 72 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "Red",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "Green",
+"speed": 5.0
+} ]
+
+[node name="goalbox" type="AnimatedSprite"]
+frames = SubResource( 1 )
+animation = "openclose"
+script = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 40 )
+shape = SubResource( 2 )
+
+[node name="Clones" type="Node2D" parent="."]
+
+[node name="light" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "Red"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="animation_finished" from="." to="." method="_on_goalbox_animation_finished"]

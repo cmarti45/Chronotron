@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://PlatformTop.tscn" type="PackedScene" id=1]
+[ext_resource path="res://StaticBody2D.gd" type="Script" id=2]
+[ext_resource path="res://Assets/platformbg.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 23.868, 7.90673 )
+
+[node name="Platform" type="KinematicBody2D"]
+scale = Vector2( 4, 4 )
+collision_mask = 17
+script = ExtResource( 2 )
+
+[node name="posts" type="KinematicBody2D" parent="."]
+collision_mask = 17
+
+[node name="background" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="background"]
+scale = Vector2( 1, 1.14286 )
+texture = ExtResource( 3 )
+
+[node name="PlatformTop" parent="." instance=ExtResource( 1 )]
+position = Vector2( -0.26487, 0 )
